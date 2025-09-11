@@ -1,0 +1,85 @@
+/* css/atalho.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+a {
+    display: inline-block;
+    text-align: center;
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #2980b9;
+}
+
+input {
+    outline: none;
+}
+
+.botao-criar {
+  background-color: #4CAF50;     /* Verde */
+  color: white;
+  padding: 15px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botao-criar:hover {
+  background-color: #45a049;     /* Verde mais escuro */
+  transform: scale(1.05);
+}
+
+.botao-criar:active {
+  background-color: #3e8e41;
+  transform: scale(1.02);
+}
+
+button {
+    margin-left: 25px;
+}

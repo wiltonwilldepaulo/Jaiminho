@@ -1,0 +1,76 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atalhos do Sistema</title>
+    <link rel="stylesheet" href="css/atalho.css">
+</head>
+<body>
+    <div class="form-container">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+
+        <label for="cpf">CPF:</label>
+        <input type="number" id="cpf" required>
+
+        <label for="id">ID:</label>
+        <input type="number" id="id" required>
+
+         <label for="setor">Setor:</label>
+        <input type="text" id="setor" required>
+
+        <a href="listaatalho.html">Ir para Lista</a>
+        <button class="botao-criar" type="submit" onclick="criarUsuario()">Criar Usuário</button>
+    </div>
+     <script>
+        function criarUsuario() {
+            const nome = document.getElementById("nome").value.trim();
+            const cpf = document.getElementById("cpf").value.trim();
+            const id = document.getElementById("id").value.trim();
+            const setor = document.getElementById("setor").value.trim();
+
+            if (!nome || !cpf || !id || !setor) {
+                alert("Preencha todos os campos!");
+                return;
+            }
+
+            // Obter lista atual ou iniciar nova
+            const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+            // Adicionar novo usuário
+            listaUsuarios.push({ setor, nome, cpf, id });
+
+            // Salvar no localStorage
+            localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
+
+            // Redirecionar para lista
+            window.location.href = "listaatalho.html";
+        }
+
+         function carregarUsuarios() {
+        const tabela = document.getElementById("tabelaCorpo");
+        const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+        listaUsuarios.forEach((usuario, index) => {
+            const row = tabela.insertRow();
+
+            row.insertCell(0).innerText = usuario.setor;
+            row.insertCell(1).innerText = usuario.nome;
+            row.insertCell(2).innerText = usuario.cpf;
+            row.insertCell(3).innerText = usuario.id;
+            row.insertCell(4).innerHTML = `<button onclick="editarUsuario(${index})">Editar</button>`;
+        });
+    }
+
+    function editarUsuario(index) {
+        // Aqui você pode reusar o código do modal anterior
+        alert("Função de edição para o usuário #" + index + " ainda não implementada.");
+    }
+
+    // Carregar ao abrir a página
+    window.onload = carregarUsuarios;
+    </script>
+</body>
+</html>

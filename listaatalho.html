@@ -1,0 +1,143 @@
+<!-- listaatalho.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Atalho do Sistema</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="atalho.html">Voltar</a>
+    <h1>Lista Atalho</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Setor</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Análises</td>
+                <td>Junior</td>
+                <td>123.456.789-00</td>
+                <td>0001</td>
+                <td><button>Editar</button></td>
+            </tr>
+            <tr>
+                <td>Segurança</td>
+                <td>Theus</td>
+                <td>098.765.432-11</td>
+                <td>0002</td>
+                <td><button>Editar</button></td>
+            </tr>
+            <tr>
+                <td>Recuperação</td>
+                <td>Allan</td>
+                <td>987.065.123-44</td>
+                <td>0003</td>
+                <td><button>Editar</button></td>
+            </tr>
+            <tr>
+                <td>Programação</td>
+                <td>Huddisson</td>
+                <td>234.056.789-11</td>
+                <td>0004</td>
+                <td><button>Editar</button></td>
+            </tr>
+            <tr>
+                <td>Hardware</td>
+                <td>Gabriel</td>
+                <td>678.321.458-90</td>
+                <td>0005</td>
+                <td><button>Editar</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Editar Dados</h2>
+        <form id="editForm">
+            <div class="editform">
+            <label for="setor">Setor:</label>
+            <input type="text" id="setor" name="setor"><br><br>
+            </div>
+
+            <div class="editform">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome"><br><br>
+            </div>
+
+            <div class="editform">
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf"><br><br>
+            </div>
+
+            <div class="editform">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id"><br><br>
+            </div>
+
+            <div class="editform">
+            <button type="submit">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <script>
+    const modal = document.getElementById("editModal");
+    const closeBtn = document.querySelector(".close");
+    const editForm = document.getElementById("editForm");
+
+    let currentRow; // Linha atual sendo editada
+
+    // Abrir modal e preencher dados
+    document.querySelectorAll("table tbody tr").forEach(row => {
+        const editBtn = row.querySelector("button");
+
+        editBtn.addEventListener("click", () => {
+            currentRow = row;
+            document.getElementById("setor").value = row.cells[0].innerText;
+            document.getElementById("nome").value = row.cells[1].innerText;
+            document.getElementById("cpf").value = row.cells[2].innerText;
+            document.getElementById("id").value = row.cells[3].innerText;
+
+            modal.style.display = "block";
+        });
+    });
+
+    // Fechar o modal
+    closeBtn.onclick = () => {
+        modal.style.display = "none";
+    };
+
+    // Salvar dados editados
+    editForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        currentRow.cells[0].innerText = document.getElementById("setor").value;
+        currentRow.cells[1].innerText = document.getElementById("nome").value;
+        currentRow.cells[2].innerText = document.getElementById("cpf").value;
+        currentRow.cells[3].innerText = document.getElementById("id").value;
+
+        modal.style.display = "none";
+    });
+
+    // Fechar modal ao clicar fora da área
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</script>
+</body>
+</html>
