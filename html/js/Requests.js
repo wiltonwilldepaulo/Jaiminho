@@ -20,5 +20,12 @@ class Requests {
         const response = await fetch(url, this.option);
         return response.json();
     }
+    static async Get(url) {
+        if (!url) {
+            throw new Error("Por favor informe o link para requisição!");
+        }
+        const response = await fetch(url);
+        return response.json();
+    }
 }
 export { Requests };
